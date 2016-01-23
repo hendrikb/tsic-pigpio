@@ -7,7 +7,6 @@ int main( int argc, char **argv )
 {
     TSIC tsic;
     bool bShowFahrenheit(false);
-    char *cvalue = NULL;
     int iGpio = 20;
     int c;
 
@@ -26,18 +25,17 @@ int main( int argc, char **argv )
           bShowFahrenheit = true;
           break;
         case 'g':
-          cvalue = optarg;
-        try   {
-          iGpio = std::stoi(optarg);
-          if (iGpio < 0 || iGpio > 27) {
-            throw;
-          }
+    	try   {
+	  iGpio = std::stoi(optarg);
+	  if (iGpio < 0 || iGpio > 27) {
+	    throw;
+	  }
        }
-        catch(...) {
-          cerr << "GPIO option -g requires an argument between 1 and 27" << endl;
-          cerr << "Example: -g24   -- see -h for help." << endl;
-          return 1;
-        }
+	catch(...) {
+	  cerr << "GPIO option -g requires an argument between 1 and 27" << endl;
+	  cerr << "Example: -g24   -- see -h for help." << endl;
+	  return 1;
+	}
           break;
         case '?':
           if (optopt == 'g')
