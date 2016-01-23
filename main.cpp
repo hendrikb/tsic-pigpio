@@ -1,4 +1,5 @@
 #include <iostream>
+#include <getopt.h>
 #include "tsic.h"
 using namespace std;
 
